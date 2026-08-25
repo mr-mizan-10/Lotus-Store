@@ -1,0 +1,193 @@
+/* *********** Product-Section ************ */
+#prodetails {
+  display: flex;
+  margin-top: 20px;
+}
+
+#prodetails .single-pro-img {
+  width: 40%;
+  margin-right: 50px;
+  position: relative;
+}
+
+.zoom-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.zoom-controls button {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  transition: background-color 0.2s ease;
+}
+
+.zoom-controls button:hover {
+  background-color: #444;
+}
+
+.zoom-controls span {
+  font-weight: 700;
+  color: #000;
+}
+
+.small-img-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 12px;
+  perspective: 450px;
+}
+
+.small-img-col {
+  flex-basis: 24%;
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  padding: 4px;
+}
+
+.small-img-col .angle-label {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #555;
+  font-weight: 600;
+}
+
+.small-img {
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+}
+
+.small-img:hover {
+  opacity: 0.92;
+  transform: scale(1.03);
+}
+
+.small-img.active-thumb {
+  opacity: 1;
+  outline: 3px solid #2563EB;
+  outline-offset: -4px;
+}
+
+.small-img.angle-1 {
+  object-position: left center;
+  transform: perspective(340px) rotateY(6deg) scale(1.0);
+  filter: brightness(0.98);
+}
+
+.small-img.angle-2 {
+  object-position: right center;
+  transform: perspective(340px) rotateY(-6deg) scale(1.0);
+  filter: brightness(0.96);
+}
+
+.small-img.angle-3 {
+  object-position: center top;
+  transform: perspective(340px) rotateX(6deg) scale(1.0);
+  filter: brightness(0.94);
+}
+
+.small-img.angle-4 {
+  object-position: center bottom;
+  transform: perspective(340px) rotateX(-6deg) scale(1.0);
+  filter: brightness(0.92);
+}
+
+#mainImg {
+  transition: transform 0.2s ease;
+  transform-origin: center center;
+}
+
+/* *********** Product-Detail-Section ************ */
+#prodetails .single-pro-details {
+  width: 50%;
+  padding-top: 30px;
+}
+
+#prodetails .single-pro-details h4 {
+  padding: 40px 0 20px 0;
+}
+
+#prodetails .single-pro-details h2 {
+  font-size: 26px;
+}
+
+#prodetails .single-pro-details select {
+  display: block;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  outline: none;
+  border: 1px solid #2563EB;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#prodetails .single-pro-details input {
+  width: 50px;
+  height: 47px;
+  padding: 0 5px 0 10px;
+  font-size: 16px;
+  margin-right: 10px;
+  border: 1px solid #2563EB;
+  border-radius: 4px;
+  outline: none;
+}
+
+#prodetails .single-pro-details button {
+  background-color: #2563EB;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#prodetails .single-pro-details button:hover {
+  background-color: #1D4ED8;
+}
+
+#prodetails .single-pro-details span {
+  line-height: 25px;
+}
+
+/* ********* Responsive ************ */
+@media screen and (max-width: 477px) {
+  #prodetails {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #prodetails .single-pro-img {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  #prodetails .single-pro-details {
+    width: 100%;
+    padding-top: 20px;
+  }
+}

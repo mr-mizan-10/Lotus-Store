@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lotus store - Blog</title>
+        <link rel="icon" href="../img/favicon.ico">
+        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="../CSS/blog.css">
+        <link rel="stylesheet" href="../CSS/responsive.css">
+    </head>
+
+    <body>
+        <!-- Header / NavBar -->
+        <header id="Header">
+            <a href="../index.html"><img src="../img/logo/logo.png" alt="Lotus store logo" class="logo"></a><span class="brand-name">Lotus</span>
+
+            <nav>
+                <ul id="navbar">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./shop.html">Shop</a></li>
+                    <li><a class="active" href="./blog.html">Blog</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li class="lg-bag"><a href="./cart.html" aria-label="Shopping Cart"><i class="fa-solid fa-bag-shopping head-Cart"></i></a></li>
+                    <a href="#" id="Close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></a>
+                </ul>
+            </nav>
+
+            <div id="mobile">
+                <a href="./cart.html" aria-label="Shopping Cart"><i class="fa-solid fa-bag-shopping"></i></a>
+                <i id="bar" class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="page-header" class="blog-header">
+            <h2 class="select-none">#readMore</h2>
+            <p class="select-none">Read all case studies about our products!</p>
+        </section> 
+
+        <!-- Blog Section -->
+        <section id="blog">
+            <div class="blog-box">
+                <div class="blog-img">
+                    <img src="../img/blog/b1.jpg" alt="Elegant Evening Gown">
+                </div>
+                <div class="blog-details">
+                    <h4>Elegant Evening Gown</h4>
+                    <p>This exquisite evening gown exudes elegance and sophistication, making it the perfect choice for formal events and special occasions. Crafted from luxurious satin fabric, its flowing silhouette gracefully drapes along the body, while the intricate beadwork and sequin embellishments add a touch of glamour.</p>
+                    <a href="#">CONTINUE READING</a>
+                </div>
+                <h1>13/01</h1>
+            </div>
+
+            <div class="blog-box">
+                <div class="blog-img">
+                    <img src="../img/blog/b2.jpg" alt="Cozy Cashmere Sweater">
+                </div>
+                <div class="blog-details">
+                    <h4>Cozy Cashmere Sweater</h4>
+                    <p>Embrace warmth and style with this luxurious cashmere sweater. Made from the finest cashmere fibers, it offers unparalleled softness and comfort against the skin. The classic crew neck design and ribbed cuffs provide a timeless appeal, making it a versatile piece for both casual outings and refined gatherings.</p>
+                    <a href="#">CONTINUE READING</a>
+                </div>
+                <h1>12/21</h1>
+            </div>
+
+            <div class="blog-box">
+                <div class="blog-img">
+                    <img src="../img/blog/b3.jpg" alt="Versatile Tailored Blazer">
+                </div>
+                <div class="blog-details">
+                    <h4>Versatile Tailored Blazer</h4>
+                    <p>Elevate your professional attire with this versatile tailored blazer. Cut to perfection, this blazer features a sleek lapel collar, structured shoulders, and a single-button closure that accentuates your silhouette with a modern flair.</p>
+                    <a href="#">CONTINUE READING</a>
+                </div>
+                <h1>10/06</h1>
+            </div>
+
+            <div class="blog-box">
+                <div class="blog-img">
+                    <img src="../img/blog/b4.jpg" alt="Relaxed Boho Maxi Dress">
+                </div>
+                <div class="blog-details">
+                    <h4>Relaxed Boho Maxi Dress</h4>
+                    <p>Embrace carefree bohemian vibes with this relaxed maxi dress. Made from lightweight and breathable fabric, this dress exudes comfort and femininity. The loose, flowing silhouette is complemented by a boho-inspired print and delicate embroidery, perfect for sunny days and beach getaways.</p>
+                    <a href="#">CONTINUE READING</a>
+                </div>
+                <h1>11/05</h1>
+            </div>
+
+            <div class="blog-box">
+                <div class="blog-img">
+                    <img src="../img/blog/b5.jpg" alt="Athleisure Hooded Jacket">
+                </div>
+                <div class="blog-details">
+                    <h4>Athleisure Hooded Jacket</h4>
+                    <p>Embrace the fusion of fashion and function with this trendy athleisure hooded jacket. Crafted from a high-performance blend of materials, it provides optimal comfort and flexibility during workouts or outdoor activities.</p>
+                    <a href="#">CONTINUE READING</a>
+                </div>
+                <h1>12/23</h1>
+            </div>
+        </section>
+
+        <!-- Pagination -->
+        <section id="pagination" class="section-p1">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#" aria-label="Next page"><i class="fa-solid fa-arrow-right"></i></a>
+        </section>
+
+        <!-- NewsLetter -->
+        <section id="newsletter" class="section-p1 section-m1">
+            <div class="newstext">
+                <h4>Sign Up For NewsLetters</h4>
+                <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+            </div>
+
+            <form class="form" onsubmit="return false;">
+                <input type="email" placeholder="Your email address" required>
+                <button type="button" class="normal" onclick="subscribe()">Sign Up</button> 
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="section-p1">
+            <div class="col">
+                <img src="../img/logo/logo.png" alt="Lotus store logo" class="logo">
+                <h4>Contact</h4>
+                <p><strong>Address:</strong> Shop-4, Ground Floor, Holding-12, Road-54, Gulshan-2, Dhaka-1212, Bangladesh.</p>
+                <p><strong>Phone:</strong> +880 1319118638</p>
+                <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+
+                <div class="follow">
+                    <h4>Follow us</h4>
+                    <div class="icon">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>About</h4>
+                <a href="./about.html">About Us</a>
+                <a href="./blog.html">Delivery Information</a>
+                <a href="./blog.html">Privacy Policy</a>
+                <a href="./blog.html">Terms & Conditions</a>
+                <a href="./contact.html">Contact Us</a>
+            </div>
+
+            <div class="col">
+                <h4>My Account</h4>
+                <a href="#newsletter">Sign In</a>
+                <a href="./cart.html">View Cart</a>
+                <a href="./shop.html">My WishList</a>
+                <a href="./sproduct.html">Track My Order</a>
+                <a href="./contact.html">Help</a>
+            </div>
+
+            <div class="col install">
+                <h4>Install App</h4>
+                <p>From App Store or Google Play</p>
+                <div class="row">
+                    <img src="../img/pay/app.jpg" alt="App Store icon">
+                    <img src="../img/pay/play.jpg" alt="Google Play Store icon">
+                </div>
+                <p>Secured Payment Gateways</p>
+                <img src="../img/pay/pay.png" alt="Payment options">
+            </div>
+
+            <div class="copyright">
+                <p>©2026 M R MIZAN. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+        <script src="https://kit.fontawesome.com/19dfb206c9.js" crossorigin="anonymous"></script>
+        <script src="../js/config.js"></script>
+        <script src="../js/script.js"></script>
+    </body>
+
+</html>
+

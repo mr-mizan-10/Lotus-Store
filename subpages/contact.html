@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lotus store - Contact</title>
+        <link rel="icon" href="../img/favicon.ico">
+        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="../CSS/contact.css">
+        <link rel="stylesheet" href="../CSS/responsive.css">
+    </head>
+
+    <body>
+        <!-- Header / NavBar -->
+        <header id="Header">
+            <a href="../index.html"><img src="../img/logo/logo.png" alt="Lotus store logo" class="logo"></a><span class="brand-name">Lotus</span>
+
+            <nav>
+                <ul id="navbar">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./shop.html">Shop</a></li>
+                    <li><a href="./blog.html">Blog</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a class="active" href="./contact.html">Contact</a></li>
+                    <li class="lg-bag"><a href="./cart.html" aria-label="Shopping Cart"><i class="fa-solid fa-bag-shopping head-Cart"></i></a></li>
+                    <a href="#" id="Close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></a>
+                </ul>
+            </nav>
+
+            <div id="mobile">
+                <a href="./cart.html" aria-label="Shopping Cart"><i class="fa-solid fa-bag-shopping"></i></a>
+                <i id="bar" class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="page-header" class="about-header">
+            <h2 class="select-none">#ConnectWithUs</h2>
+            <p class="select-none">Leave a Message, We love to hear from you!</p>
+        </section>
+
+        <!-- Contact Details -->
+        <section id="contact-details" class="section-p1">
+            <div class="details">
+                <span>GET IN TOUCH</span>
+                <h2>Visit one of our agency locations or contact us today</h2>
+                <h3>Head Office</h3>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-map-pin"></i>
+                        <p>Top Floor, Holding-12, Road-54, Gulshan-2, Dhaka-1212, Bangladesh</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>mrmizan@gmail.com</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+880 1319118638</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-clock"></i>
+                        <p>Monday to Saturday: 9:00 to 16:00</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3650.6693256232697!2d90.40941808641757!3d23.7947868320106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjPCsDQ3JzQxLjIiTiA5MMKwMjQnNTEuNCJF!5e0!3m2!1sen!2sbd!4v1785836508956!5m2!1sen!2sbd" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </section>
+
+        <!-- Form Details -->
+        <section id="form-details">
+            <form id="contact-form" onsubmit="return false;">
+                <span>LEAVE A MESSAGE</span>
+                <h2>We love to hear from you!</h2>
+                <input id="contact-name" type="text" placeholder="Your Name" required />
+                <input id="contact-email" type="email" placeholder="Your E-Mail" required />
+                <input id="contact-subject" type="text" placeholder="Subject" />
+                <textarea id="contact-message" placeholder="Your Message" cols="30" rows="10" required></textarea>
+                <button type="submit" class="normal">Submit</button>
+            </form>
+
+            <div class="people">
+                <div>
+                    <img src="../img/people/1.png" alt="M R MIZAN" />
+                    <p>
+                        <span>M R MIZAN</span> CEO & Founder of Lotus Store 
+                        <br />Phone: +01319118638 <br />Email: mrmizan@gmail.com
+                    </p>
+                </div>
+                <div>
+                    <img src="../img/people/2.png" alt="R K KHAN" />
+                    <p>
+                        <span>R K KHAN</span> Senior Marketing Manager 
+                        <br />Phone: +01 2300 07789 <br />Email: rkkhan@lotusstore.com
+                    </p>
+                </div>
+                <div>
+                    <img src="../img/people/3.png" alt="LISA CHOUDHURY" />
+                    <p>
+                        <span>LISA CHOUDHURY</span> Senior Marketing Manager 
+                        <br />Phone: +01 2302 09730 <br />Email: lisa.choudhury@lotusstore.com
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NewsLetter -->
+        <section id="newsletter" class="section-p1 section-m1">
+            <div class="newstext">
+                <h4>Sign Up For NewsLetters</h4>
+                <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+            </div>
+
+            <form class="form" onsubmit="return false;">
+                <input type="email" placeholder="Your email address" required>
+                <button type="button" class="normal" onclick="subscribe()">Sign Up</button> 
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="section-p1">
+            <div class="col">
+                <img src="../img/logo/logo.png" alt="Lotus store logo" class="logo">
+                <h4>Contact</h4>
+                <p><strong>Address:</strong> Shop-4, Ground Floor, Holding-12, Road-54, Gulshan-2, Dhaka-1212, Bangladesh.</p>
+                <p><strong>Phone:</strong> +880 1319118638</p>
+                <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+
+                <div class="follow">
+                    <h4>Follow us</h4>
+                    <div class="icon">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>About</h4>
+                <a href="./about.html">About Us</a>
+                <a href="./blog.html">Delivery Information</a>
+                <a href="./blog.html">Privacy Policy</a>
+                <a href="./blog.html">Terms & Conditions</a>
+                <a href="./contact.html">Contact Us</a>
+            </div>
+
+            <div class="col">
+                <h4>My Account</h4>
+                <a href="#newsletter">Sign In</a>
+                <a href="./cart.html">View Cart</a>
+                <a href="./shop.html">My WishList</a>
+                <a href="./sproduct.html">Track My Order</a>
+                <a href="./contact.html">Help</a>
+            </div>
+
+            <div class="col install">
+                <h4>Install App</h4>
+                <p>From App Store or Google Play</p>
+                <div class="row">
+                    <img src="../img/pay/app.jpg" alt="App Store icon">
+                    <img src="../img/pay/play.jpg" alt="Google Play Store icon">
+                </div>
+                <p>Secured Payment Gateways</p>
+                <img src="../img/pay/pay.png" alt="Payment options">
+            </div>
+
+            <div class="copyright">
+                <p>©2026 M R MIZAN. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+        <script src="https://kit.fontawesome.com/19dfb206c9.js" crossorigin="anonymous"></script>
+        <script src="../js/config.js"></script>
+        <script src="../js/script.js"></script>
+    </body>
+
+</html>
+

@@ -1,0 +1,15 @@
+# Environments
+.env
+.env.*
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

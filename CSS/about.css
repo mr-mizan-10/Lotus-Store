@@ -1,0 +1,102 @@
+/* ************* Hero Section ***************** */
+#page-header.about-header {
+  background: url(../img/about/banner.png);
+  background-position: center;
+  background-size: cover;
+}
+
+/* ************* About Us Section ***************** */
+#about-head {
+  display: flex;
+  align-items: center;
+}
+
+#about-head img {
+  width: 50%;
+  height: auto;
+  border-radius: 4px;
+}
+
+#about-head div {
+  padding-left: 40px;
+}
+
+.marquee-wrapper {
+  background-color: #DEEBFE;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 8px 0;
+  border-radius: 4px;
+}
+
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee-anim 18s linear infinite;
+  color: #1e3a8a;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+}
+
+@keyframes marquee-anim {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}
+
+/* ************* About App Section ***************** */
+#about-app {
+  text-align: center;
+}
+
+#about-app h1 a {
+  line-height: 2;
+  text-decoration: none;
+  color: #2563EB;
+  transition: color 0.3s ease;
+}
+
+#about-app h1 a:hover {
+  color: #1D4ED8;
+}
+
+#about-app .video {
+  width: 70%;
+  height: auto;
+  margin: 30px auto 0 auto;
+}
+
+#about-app .video video {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+}
+
+/* ********** Responsive ************* */
+@media screen and (max-width: 799px) {
+  #about-head {
+    flex-direction: column;
+  }
+
+  #about-head img {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  #about-head div {
+    padding-left: 0;
+  }
+
+  #about-app .video {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 477px) {
+  #about-app .video {
+    width: 100%;
+  }
+}

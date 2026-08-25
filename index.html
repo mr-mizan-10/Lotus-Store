@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotus Store | Premium Shopping</title>
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/responsive.css">
+</head>
+
+<body>
+    <!-- NavBar -->
+    <header id="Header">
+        <a href="index.html"><img src="./img/logo/logo.png" alt="Lotus Store" class="logo"></a><span
+            class="brand-name">Lotus</span>
+
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="subpages/shop.html">Shop</a></li>
+                <li><a href="subpages/blog.html">Blog</a></li>
+                <li><a href="subpages/about.html">About</a></li>
+                <li><a href="subpages/contact.html">Contact</a></li>
+                <li class="lg-bag"><a href="subpages/cart.html"><i class="fa-solid fa-bag-shopping head-Cart"></i></a>
+                </li>
+                <li><a href="#" id="Close"><i class="fa-solid fa-xmark"></i></a></li>
+            </ul>
+        </div>
+
+        <div id="auth-area">
+            <button id="login-btn" class="signin-gradient-btn">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                <span>Sign In</span>
+            </button>
+        </div>
+
+        <!-- Modern Login Modal -->
+        <div id="login-modal"
+            style="display:none;position:fixed;left:0;right:0;top:0;bottom:0;background:rgba(15,23,42,0.6);align-items:center;justify-content:center;z-index:99999;">
+            <div class="login-card-box">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <img src="./img/logo/logo.png" alt="Lotus" style="height:28px;">
+                        <h3 id="login-modal-title" style="margin:0;color:#0f172a;font-size:1.3rem;font-weight:700;">Welcome to Lotus</h3>
+                    </div>
+                    <button id="login-close-x" style="background:none;border:none;font-size:18px;color:#94a3b8;cursor:pointer;padding:4px;"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <p id="login-modal-subtitle" style="margin:0 0 18px 0;font-size:13px;color:#64748b;">Sign in to manage orders, wishlist & rewards</p>
+                
+                <div class="login-input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input id="login-username" placeholder="Username (e.g. mizan)" autocomplete="username">
+                </div>
+                
+                <div class="login-input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input id="login-password" type="password" placeholder="Password" autocomplete="current-password">
+                </div>
+
+                <div class="login-input-group" id="confirm-group" style="display:none;">
+                    <i class="fa-solid fa-shield-check"></i>
+                    <input id="login-password-confirm" type="password" placeholder="Confirm password" autocomplete="new-password">
+                </div>
+
+                <div style="margin-top:14px;">
+                    <button id="login-submit" class="modal-submit-btn">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        <span id="login-submit-text">Sign In</span>
+                    </button>
+                </div>
+
+                <div style="margin-top:16px;font-size:13.5px;text-align:center;">
+                    <a href="#" id="toggle-register" style="color:#4F46E5;text-decoration:none;font-weight:600;">Don't have an account? Create one</a>
+                </div>
+
+                <div id="login-error" style="color:#b91c1c;margin-top:14px;font-size:13px;display:none;background:#fef2f2;border:1px solid #fecaca;padding:10px 12px;border-radius:8px;line-height:1.4;"></div>
+            </div>
+        </div>
+
+        <div id="mobile">
+            <a href="./subpages/cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Personalized Welcome Banner for Logged-In Members -->
+    <div id="home-user-welcome" class="home-welcome-bar" style="display:none;">
+        <div class="home-welcome-content">
+            <h2>Welcome back, <span id="home-username">Member</span>! 👋</h2>
+            <p>Ready to refresh your style? Explore the latest arrivals and member-exclusive deals.</p>
+        </div>
+        <a href="subpages/shop.html" class="continue-shopping-btn">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span>Continue Shopping</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="img-slider">
+        <div class="slide active">
+            <img src="./img/hero1.png" alt="Hero Image 1">
+            <div class="info">
+                <h4 class="select-none">Welcome to Lotus Store</h4>
+                <h2 class="select-none">Premium Fashion Collection</h2>
+                <h1 class="select-none">Style Meets Comfort</h1>
+                <p class="select-none"><strong>Save more with coupons & up to 50% off!</strong></p>
+                <button onclick="window.location.href='subpages/shop.html'">Shop Now</button>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="./img/hero-2.png" alt="Hero Image 2">
+            <div class="info">
+                <h4 class="select-none">NEW COLLECTION</h4>
+                <h2 class="select-none">Premium Fashion</h2>
+                <h1 class="select-none">Discover Your Perfect Style</h1>
+                <p class="select-none"><strong>Save up to 20% off!</strong></p>
+                <button onclick="window.location.href='subpages/shop.html'">Shop Now</button>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="./img/hero3.png" alt="Hero Image 3">
+            <div class="info">
+                <h4 class="select-none">NEW COLLECTION</h4>
+                <h2 class="select-none">Summer Sale</h2>
+                <h1 class="select-none">Discover Your Perfect Style</h1>
+                <p class="select-none"><strong>Save up to 25% off!</strong></p>
+                <button onclick="window.location.href='subpages/shop.html'">Shop Now</button>
+            </div>
+        </div>
+
+        <div class="slide-navigation">
+            <div class="btn active"></div>
+            <div class="btn"></div>
+            <div class="btn"></div>
+        </div>
+    </section>
+
+    <!-- Feature Section -->
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="./img/features/f1.png" alt="Free Shipping">
+            <h6>Free Shipping</h6>
+        </div>
+        <div class="fe-box">
+            <img src="./img/features/f2.png" alt="Online Order">
+            <h6>Online Order</h6>
+        </div>
+        <div class="fe-box">
+            <img src="./img/features/f3.png" alt="Save Money">
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <img src="./img/features/f4.png" alt="Promotion">
+            <h6>Promotion</h6>
+        </div>
+        <div class="fe-box">
+            <img src="./img/features/f5.png" alt="Happy Sell">
+            <h6>Happy Sell</h6>
+        </div>
+        <div class="fe-box">
+            <img src="./img/features/f6.png" alt="24/7 Support">
+            <h6>24/7 Support</h6>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="product1" class="section-p1">
+        <h2>Featured Products</h2>
+        <p>Summer Collection New Modern Design</p>
+
+        <div class="pro-container">
+            <!-- Product Box -->
+            <div class="pro" onclick="window.location.href='./subpages/sproduct.html?id=6';">
+                <img src="./img/products/f6.jpg" alt="Modern Blue Shirt">
+                <div class="des">
+                    <span>Lotus Store</span>
+                    <h5>Modern Blue Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>৳2,599</h4>
+                </div>
+                <a href="subpages/cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='./subpages/sproduct.html?id=9';">
+                <img src="./img/products/n1.jpg" alt="Urban Print Shirt">
+                <div class="des">
+                    <span>Lotus Store</span>
+                    <h5>Urban Print Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>৳2,499</h4>
+                </div>
+                <a href="subpages/cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='./subpages/sproduct.html?id=8';">
+                <img src="./img/products/f8.jpg" alt="Stylish Black Shirt">
+                <div class="des">
+                    <span>Lotus Store</span>
+                    <h5>Stylish Black Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>৳2,799</h4>
+                </div>
+                <a href="subpages/cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='./subpages/sproduct.html?id=5';">
+                <img src="./img/products/f5.jpg" alt="Classic Cotton Shirt">
+                <div class="des">
+                    <span>Lotus Store</span>
+                    <h5>Classic Cotton Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>৳1,899</h4>
+                </div>
+                <a href="subpages/cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='./subpages/sproduct.html?id=16';">
+                <img src="./img/products/n8.jpg" alt="Signature Lotus Shirt">
+                <div class="des">
+                    <span>Lotus Store</span>
+                    <h5>Signature Lotus Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>৳2,799</h4>
+                </div>
+                <a href="subpages/cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='./subpages/sproduct.html?id=13';">
+                <img src="./img/products/n5.jpg" alt="Everyday Comfort Shirt">
+                <div class="des">
+                    <span>Lotus Store</span>
+                    <h5>Everyday Comfort Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>৳2,099</h4>
+                </div>
+                <a href="subpages/cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='./subpages/sproduct.html?id=7';">
+                <img src="./img/products/f7.jpg" alt="Luxury Printed Shirt">
+                <div class="des">
+                    <span>Lotus Store</span>
+                    <h5>Luxury Printed Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>৳2,899</h4>
+                </div>
+                <a href="subpages/cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='./subpages/sproduct.html?id=3';">
+                <img src="./img/products/f3.jpg" alt="Vintage Floral Shirt">
+                <div class="des">
+                    <span>Lotus Store</span>
+                    <h5>Vintage Floral Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>৳2,699</h4>
+                </div>
+                <a href="subpages/cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Offer Banner -->
+    <section id="banner" class="section-m1">
+        <h4 id="offer-banner-subtitle">Featured Promotion</h4>
+        <h2 id="offer-banner-heading"><span id="offer-banner-title">Eid Mega Sale</span> — <span class="promo-percent" id="offer-banner-discount">30% Off</span></h2>
+        <p id="offer-banner-desc">Get amazing discounts on all premium shirts & accessories.</p>
+        <div id="offer-banner-coupon-wrap" class="offer-coupon-chip" style="display:none;" title="Click to copy coupon">
+            <span><i class="fa-solid fa-ticket"></i> Use Coupon:</span>
+            <code id="offer-banner-coupon-code">EID30</code>
+            <i class="fa-regular fa-copy" style="font-size:11px;opacity:0.8;"></i>
+        </div>
+        <button class="normal" id="offer-banner-cta" onclick="window.location.href='subpages/shop.html'">Explore More</button>
+    </section>
+
+    <!-- Small Banner -->
+    <section id="sm-banner" class="section-p1">
+        <div class="bannner-box">
+            <h4>crazy deals</h4>
+            <h2>buy 1 get 1 free</h2>
+            <span>The Best classic dress is on sale at Lotus Store</span>
+            <button class="white">Learn More</button>
+        </div>
+        <div class="bannner-box">
+            <h4>spring/summer</h4>
+            <h2>upcoming season</h2>
+            <span>The Best classic dress is on sale at Lotus Store</span>
+            <button class="white">Collection</button>
+        </div>
+    </section>
+
+    <!-- Feature Banner -->
+    <section id="banner3">
+        <div class="banner-box">
+            <h4>SEASON SALE</h4>
+            <h3>MEGA SALE Up to 50% OFF Only This Week</h3>
+        </div>
+        <div class="banner-box">
+            <h4>NEW FOOTWEAR COLLECTION</h4>
+            <h3>spring / summer 2026</h3>
+        </div>
+        <div class="banner-box">
+            <h4>T-SHIRT</h4>
+            <h3>New Trendy Prints for Spring/Summer 2026</h3>
+        </div>
+    </section>
+
+    <!-- NewsLetter -->
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="email" id="email" placeholder="Enter your email address">
+            <button class="normal" onclick="subscribe()">Subscribe</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="section-p1">
+        <div class="col">
+            <img src="./img/logo/logo.png" alt="Lotus Store" class="logo">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> Shop-4, Ground Floor, Holding-12, Road-54, Gulshan-2, Dhaka-1212, Bangladesh.
+            </p>
+            <p><strong>Phone:</strong> +880 1319118638</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="./subpages/about.html">About Us</a>
+            <a href="./subpages/blog.html">Delivery Information</a>
+            <a href="./subpages/blog.html">Privacy Policy</a>
+            <a href="./subpages/blog.html">Terms & Conditions</a>
+            <a href="./subpages/contact.html">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#newsletter">Sign In</a>
+            <a href="./subpages/cart.html">View Cart</a>
+            <a href="./subpages/shop.html">My WishList</a>
+            <a href="./subpages/sproduct.html">Track My Order</a>
+            <a href="./subpages/contact.html">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="./img/pay/app.jpg" alt="App Store">
+                <img src="./img/pay/play.jpg" alt="Google Play">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="./img/pay/pay.png" alt="Payment Methods">
+        </div>
+
+        <div class="copyright">
+            <p>© 2026 M R MIZAN. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/19dfb206c9.js" crossorigin="anonymous"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/slideshow.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard - Lotus Store</title>
+    <link rel="icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="stylesheet" href="../CSS/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Top Navigation Bar -->
+    <header class="dash-topbar">
+        <a href="../index.html" class="dash-brand">
+            <img src="../img/logo/logo.png" alt="Lotus Store">
+            <span>Lotus</span>
+        </a>
+
+        <div class="dash-search-box">
+            <i class="fa-solid fa-magnifying-glass" style="color:#94a3b8;"></i>
+            <input type="text" placeholder="Search orders, products, invoices...">
+        </div>
+
+        <div class="dash-top-actions">
+            <a href="cart.html" class="dash-icon-btn" title="Shopping Cart" aria-label="Shopping Cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </a>
+
+            <div class="dash-icon-btn" title="Notifications">
+                <i class="fa-solid fa-bell"></i>
+                <span class="dash-badge-dot"></span>
+            </div>
+
+            <div class="dash-user-profile" id="dash-user-badge">
+                <div class="dash-avatar" id="dash-avatar-letter">U</div>
+                <div class="dash-user-info">
+                    <span class="dash-user-name" id="dash-username-display">Customer</span>
+                    <span class="dash-user-role">Member</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout Container -->
+    <div class="dash-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="dash-sidebar">
+            <ul class="dash-nav-list">
+                <li class="dash-nav-item active">
+                    <a href="#overview"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+                </li>
+                <li class="dash-nav-item">
+                    <a href="#orders"><i class="fa-solid fa-box-archive"></i> My Orders</a>
+                </li>
+                <li class="dash-nav-item">
+                    <a href="#wishlist"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                </li>
+                <li class="dash-nav-item">
+                    <a href="#addresses"><i class="fa-solid fa-location-dot"></i> Saved Addresses</a>
+                </li>
+                <li class="dash-nav-item">
+                    <a href="#rewards"><i class="fa-solid fa-gift"></i> Reward Points</a>
+                </li>
+                <li class="dash-nav-item">
+                    <a href="#settings"><i class="fa-solid fa-sliders"></i> Account Settings</a>
+                </li>
+            </ul>
+
+            <div class="dash-sidebar-footer">
+                <a href="shop.html" class="dash-back-store-btn">
+                    <i class="fa-solid fa-arrow-left"></i> Continue Shopping
+                </a>
+                <button id="dash-logout-btn" class="dash-logout-sidebar-btn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Content -->
+        <main class="dash-main">
+            <!-- Welcome Banner -->
+            <div class="dash-welcome-card">
+                <div class="dash-welcome-text">
+                    <h1>Welcome back, <span id="welcome-user-name">Valued Customer</span>! 👋</h1>
+                    <p>Track your active shipments, view invoice histories, and explore curated seasonal fashion.</p>
+                </div>
+                <div class="dash-welcome-actions">
+                    <a href="shop.html" class="dash-primary-action">
+                        <i class="fa-solid fa-bag-shopping"></i> Shop New Arrivals
+                    </a>
+                </div>
+            </div>
+
+            <!-- Statistics Grid -->
+            <div class="dash-stats-grid">
+                <div class="dash-stat-card">
+                    <div class="dash-stat-icon icon-blue">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <div class="dash-stat-details">
+                        <h3 id="stat-total-orders">4</h3>
+                        <span>Total Orders</span>
+                    </div>
+                </div>
+
+                <div class="dash-stat-card">
+                    <div class="dash-stat-icon icon-emerald">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="dash-stat-details">
+                        <h3>Active</h3>
+                        <span>Member Status</span>
+                    </div>
+                </div>
+
+                <div class="dash-stat-card">
+                    <div class="dash-stat-icon icon-amber">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <div class="dash-stat-details">
+                        <h3>1,250</h3>
+                        <span>Lotus Points (৳125)</span>
+                    </div>
+                </div>
+
+                <div class="dash-stat-card">
+                    <div class="dash-stat-icon icon-purple">
+                        <i class="fa-solid fa-ticket"></i>
+                    </div>
+                    <div class="dash-stat-details">
+                        <h3>LOTUS10</h3>
+                        <span>10% Discount Active</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders Section -->
+            <div class="dash-section-card" id="orders">
+                <div class="dash-section-header">
+                    <h2>Recent Orders</h2>
+                    <a href="shop.html" class="dash-view-all">Browse Catalog <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <div class="dash-table-wrapper">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Order Ref</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Payment</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dash-orders-body">
+                            <tr>
+                                <td><span class="order-id-tag">LOTUS-984210</span></td>
+                                <td>Aug 21, 2026</td>
+                                <td>2 items (Premium Floral Shirt)</td>
+                                <td>Cash on Delivery</td>
+                                <td><strong>৳4,998</strong></td>
+                                <td><span class="status-pill status-delivered"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                                <td><button class="btn-invoice" onclick="alert('Order #LOTUS-984210 Invoice:\nStatus: Delivered\nTotal: ৳4,998\nAddress: Gulshan-2, Dhaka')">View Details</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="order-id-tag">LOTUS-832194</span></td>
+                                <td>Aug 15, 2026</td>
+                                <td>1 item (Vintage Floral Shirt)</td>
+                                <td>Bkash / Digital</td>
+                                <td><strong>৳2,699</strong></td>
+                                <td><span class="status-pill status-delivered"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                                <td><button class="btn-invoice" onclick="alert('Order #LOTUS-832194 Invoice:\nStatus: Delivered\nTotal: ৳2,699\nAddress: Gulshan-2, Dhaka')">View Details</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="order-id-tag">LOTUS-749102</span></td>
+                                <td>Jul 28, 2026</td>
+                                <td>3 items (Classic Cotton + Modern Blue)</td>
+                                <td>Card Payment</td>
+                                <td><strong>৳7,097</strong></td>
+                                <td><span class="status-pill status-delivered"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                                <td><button class="btn-invoice" onclick="alert('Order #LOTUS-749102 Invoice:\nStatus: Delivered\nTotal: ৳7,097\nAddress: Gulshan-2, Dhaka')">View Details</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Two-Column Section: Saved Addresses & Quick Reorder -->
+            <div class="dash-two-col">
+                <!-- Saved Shipping Addresses -->
+                <div class="dash-section-card" id="addresses">
+                    <div class="dash-section-header">
+                        <h2>Saved Address</h2>
+                        <span class="address-tag">Default Home</span>
+                    </div>
+                    <div class="dash-address-box">
+                        <div class="address-header">
+                            <strong id="dash-address-name">Mr. Mizan</strong>
+                            <span style="font-size:12px;color:#2563EB;"><i class="fa-solid fa-check"></i> Verified</span>
+                        </div>
+                        <p id="dash-address-line">Holding-12, Road-54, Gulshan-2, Dhaka-1212, Bangladesh</p>
+                        <p><strong>Phone:</strong> +880 1319118638</p>
+                        <p><strong>Email:</strong> mrmizan@gmail.com</p>
+                    </div>
+                </div>
+
+                <!-- Recommended Quick Reorder -->
+                <div class="dash-section-card">
+                    <div class="dash-section-header">
+                        <h2>Trending Shirts</h2>
+                        <a href="shop.html" class="dash-view-all">View All</a>
+                    </div>
+                    <div class="dash-reorder-grid">
+                        <div class="dash-reorder-item">
+                            <img src="../img/products/f1.jpg" alt="Floral Shirt">
+                            <div class="dash-reorder-info">
+                                <h4>Premium Floral</h4>
+                                <span>৳2,499</span>
+                            </div>
+                            <a href="sproduct.html?id=1" class="dash-reorder-btn">View</a>
+                        </div>
+                        <div class="dash-reorder-item">
+                            <img src="../img/products/f6.jpg" alt="Blue Shirt">
+                            <div class="dash-reorder-info">
+                                <h4>Modern Blue</h4>
+                                <span>৳2,599</span>
+                            </div>
+                            <a href="sproduct.html?id=6" class="dash-reorder-btn">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/config.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+
+</html>

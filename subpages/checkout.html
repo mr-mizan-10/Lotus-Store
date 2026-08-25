@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotus store - Checkout</title>
+    <link rel="icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/cart.css">
+    <link rel="stylesheet" href="../CSS/responsive.css">
+</head>
+
+<body>
+    <!-- Header / NavBar -->
+    <header id="Header">
+        <a href="../index.html"><img src="../img/logo/logo.png" alt="Lotus store logo" class="logo"></a><span class="brand-name">Lotus</span>
+
+        <nav>
+            <ul id="navbar">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="./shop.html">Shop</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li class="lg-bag"><a href="./cart.html" aria-label="Shopping Cart"><i class="fa-solid fa-bag-shopping head-Cart"></i></a></li>
+                <a href="#" id="Close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </nav>
+
+        <div id="mobile">
+            <a href="./cart.html" aria-label="Shopping Cart"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+    <section id="page-header" class="about-header">
+        <h2 class="select-none">Checkout</h2>
+        <p class="select-none">Review your order and complete your payment.</p>
+    </section>
+
+    <section class="section-p1">
+        <div id="checkout-content" style="display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;">
+            <div style="flex:1 1 380px;min-width:320px;">
+                <div style="background:#fff;border:1px solid #e2e2e2;border-radius:10px;padding:30px;">
+                    <h3>Billing Details</h3>
+                    <div id="checkout-error" style="display:none;margin-top:15px;padding:12px;border-radius:6px;background:#fee2e2;color:#b91c1c;border:1px solid #fca5a5;font-weight:600;font-size:14px;"></div>
+                    <div style="margin-top:20px;">
+                        <label for="billing-name" style="font-weight:600;font-size:14px;">Full Name <span style="color:#dc2626;">*</span></label>
+                        <input id="billing-name" type="text" placeholder="Enter your full name" style="width:100%;padding:12px 15px;margin-top:8px;border:1px solid #c8cac7;border-radius:4px;">
+                    </div>
+                    <div style="margin-top:20px;">
+                        <label for="billing-email" style="font-weight:600;font-size:14px;">Email Address <span style="color:#dc2626;">*</span></label>
+                        <input id="billing-email" type="email" placeholder="Enter your email" style="width:100%;padding:12px 15px;margin-top:8px;border:1px solid #c8cac7;border-radius:4px;">
+                    </div>
+                    <div style="margin-top:20px;">
+                        <label for="billing-phone" style="font-weight:600;font-size:14px;">Phone Number <span style="color:#dc2626;">*</span></label>
+                        <input id="billing-phone" type="tel" placeholder="Enter your phone number" style="width:100%;padding:12px 15px;margin-top:8px;border:1px solid #c8cac7;border-radius:4px;">
+                    </div>
+                    <div style="margin-top:20px;">
+                        <label for="billing-address" style="font-weight:600;font-size:14px;">Shipping Address <span style="color:#dc2626;">*</span></label>
+                        <textarea id="billing-address" placeholder="Enter full shipping address (House, Road, City, etc.)" style="width:100%;padding:12px 15px;margin-top:8px;border:1px solid #c8cac7;border-radius:4px;min-height:100px;"></textarea>
+                    </div>
+                    <div style="margin-top:20px;">
+                        <h4>Payment Method</h4>
+                        <label style="display:block;margin-top:10px;font-weight:600;cursor:pointer;">
+                            <input type="radio" name="payment-method" value="cod" checked style="margin-right:8px;">
+                            Cash on Delivery (Available)
+                        </label>
+                        <label style="display:block;margin-top:10px;font-weight:600;color:#888;cursor:pointer;">
+                            <input type="radio" name="payment-method" value="online" style="margin-right:8px;">
+                            Pay Online (Cards / Mobile Banking - Coming Soon)
+                        </label>
+                    </div>
+                    <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+                        <button type="button" class="normal" id="confirm-order" style="margin-top:0;background-color:#2563EB;color:#fff;">Place Order</button>
+                        <button type="button" class="white" id="cancel-order" style="margin-top:0;background-color:#6b7280;color:#fff;border-color:#6b7280;">Cancel</button>
+                    </div>
+                    <div id="thankyou-message" style="display:none;margin-top:20px;padding:18px;border-radius:10px;background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;line-height:1.6;">
+                        <strong>Order Confirmed!</strong> <span id="order-ref-text">Thank you for your order!</span> We have received your order and our team will contact you shortly for dispatch.
+                    </div>
+                </div>
+            </div>
+
+            <div style="flex:1 1 320px;min-width:320px;">
+                <div style="background:#fff;border:1px solid #e2e2e2;border-radius:10px;padding:30px;">
+                    <h3>Order Summary</h3>
+                    <div id="checkout-items-list" style="margin-top:15px;max-height:280px;overflow-y:auto;border-bottom:1px solid #eee;padding-bottom:15px;">
+                        <!-- Dynamically populated by JS -->
+                    </div>
+                    <table style="width:100%;margin-top:15px;border-collapse:collapse;">
+                        <tr>
+                            <td style="padding:8px 0;color:#555;">Subtotal</td>
+                            <td id="checkout-subtotal" style="padding:8px 0;text-align:right;font-weight:600;">৳0</td>
+                        </tr>
+                        <tr id="checkout-discount-row" style="display:none;">
+                            <td style="padding:8px 0;color:#16a34a;">Coupon Discount</td>
+                            <td id="checkout-discount" style="padding:8px 0;text-align:right;font-weight:600;color:#16a34a;">-৳0</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:8px 0;color:#555;">Shipping</td>
+                            <td id="checkout-shipping" style="padding:8px 0;text-align:right;font-weight:600;color:#16a34a;">Free</td>
+                        </tr>
+                        <tr style="border-top:1px solid #eee;">
+                            <td style="padding:12px 0;font-size:16px;font-weight:700;">Total</td>
+                            <td id="checkout-total" style="padding:12px 0;text-align:right;font-size:18px;font-weight:800;color:#2563EB;">৳0</td>
+                        </tr>
+                    </table>
+                    <div style="margin-top:20px;">
+                        <a href="./cart.html" class="normal" style="display:inline-block;width:100%;text-align:center;text-decoration:none;padding:10px;background:#f3f4f6;color:#374151;border:1px solid #d1d5db;border-radius:6px;font-weight:600;">Edit Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img src="../img/logo/logo.png" alt="Lotus store logo" class="logo">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> Shop-4, Ground Floor, Holding-12, Road-54, Gulshan-2, Dhaka-1212, Bangladesh.</p>
+            <p><strong>Phone:</strong> +880 1319118638</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="./about.html">About Us</a>
+            <a href="./blog.html">Delivery Information</a>
+            <a href="./blog.html">Privacy Policy</a>
+            <a href="./blog.html">Terms & Conditions</a>
+            <a href="./contact.html">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#newsletter">Sign In</a>
+            <a href="./cart.html">View Cart</a>
+            <a href="./shop.html">My WishList</a>
+            <a href="./sproduct.html">Track My Order</a>
+            <a href="./contact.html">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="../img/pay/app.jpg" alt="App Store icon">
+                <img src="../img/pay/play.jpg" alt="Google Play Store icon">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="../img/pay/pay.png" alt="Payment options">
+        </div>
+
+        <div class="copyright">
+            <p>©2026 M R MIZAN. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/19dfb206c9.js" crossorigin="anonymous"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
