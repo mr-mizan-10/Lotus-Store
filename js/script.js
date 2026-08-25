@@ -28,16 +28,11 @@
 
   const isSubpage = window.location.pathname.includes("/subpages/");
   const root = isSubpage ? "../" : "./";
-  const API_ROOT = (typeof window !== 'undefined' && (window.API_BASE_URL || window.API_ROOT)) || (function() {
-    if (typeof window !== 'undefined' && window.location) {
-      const hostname = window.location.hostname || 'localhost';
-      const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
-      if (hostname === '127.0.0.1' || hostname === 'localhost') {
-        return `${protocol}//${hostname}:5000`;
-      }
-    }
-    return 'http://localhost:5000';
-  })();
+  const API_ROOT =
+    (typeof window !== 'undefined' && (window.API_BASE_URL || window.API_ROOT)) ||
+    (typeof window !== 'undefined' && window.location && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? 'http://localhost:5000'
+      : 'https://lotus-store.onrender.com');
   const money = n => "৳" + Number(n || 0).toLocaleString("en-BD");
   const resolve = path => {
     if (!path) return '';

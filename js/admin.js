@@ -1,14 +1,11 @@
 (function () {
   "use strict";
 
-  const API_ROOT = (typeof window !== 'undefined' && (window.API_BASE_URL || window.API_ROOT)) || (function () {
-    const hostname = (typeof window !== 'undefined' && window.location && window.location.hostname) || 'localhost';
-    const protocol = (typeof window !== 'undefined' && window.location && window.location.protocol === 'https:') ? 'https:' : 'http:';
-    if (hostname === '127.0.0.1' || hostname === 'localhost') {
-      return `${protocol}//${hostname}:5000`;
-    }
-    return 'http://localhost:5000';
-  })();
+  const API_ROOT =
+    (typeof window !== 'undefined' && (window.API_BASE_URL || window.API_ROOT)) ||
+    (typeof window !== 'undefined' && window.location && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? 'http://localhost:5000'
+      : 'https://lotus-store.onrender.com');
 
   const money = n => "৳" + Number(n || 0).toLocaleString("en-BD");
 

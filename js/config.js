@@ -7,22 +7,16 @@
  * 1. Local Development (Live Server / localhost):
  *    - Automatically points to 'http://localhost:5000' when running on localhost or 127.0.0.1.
  * 
- * 2. Production (e.g. Vercel, Netlify, Custom Domain):
- *    - After deploying your backend to Render / Railway, copy your backend URL and replace
- *      'https://YOUR-BACKEND-URL.onrender.com' in the PRODUCTION_API_URL setting below.
- *      Example: 'https://lotus-store-api.onrender.com'
+ * 2. Production (Render / Cloud deployment):
+ *    - PRODUCTION_API_URL is configured to 'https://lotus-store.onrender.com'
  */
 
 (function (window) {
   'use strict';
 
   const CONFIG = {
-    // =========================================================================
-    // PRODUCTION BACKEND URL PLACEHOLDER
-    // Replace this string with your live Render backend URL after deployment
-    // Example: 'https://lotus-store-api.onrender.com'
-    // =========================================================================
-    PRODUCTION_API_URL: 'https://YOUR-BACKEND-URL.onrender.com',
+    // Production Render backend URL
+    PRODUCTION_API_URL: 'https://lotus-store.onrender.com',
 
     // Local development backend URL
     LOCAL_API_URL: 'http://localhost:5000',
