@@ -25,10 +25,10 @@ Lotus store Ecommerce is a sleek, user-friendly, and responsive online shopping 
 
 ## Credits
 
-Lotus store Ecommerce Frontend is built with love by [Anurag Kumar](https://github.com/anuragino).
+Lotus Store Ecommerce Website is designed and developed by **Md Mizanur Rahaman Mizan**.
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use, modify, and distribute this code.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 Happy shopping! 🛒✨
