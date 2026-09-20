@@ -55,6 +55,51 @@
     return root + "subpages/sproduct.html?id=" + encodeURIComponent(targetId);
   };
   const cartUrl = root + "subpages/cart.html";
+  let authenticatedUser = null;
+  let authCheckPromise = null;
+
+  function saveShoppingReturnUrl() {
+    try {
+      sessionStorage.setItem("lotusShoppingReturnUrl", window.location.pathname + window.location.search + window.location.hash);
+      sessionStorage.setItem("lotusShoppingMessage", "Please login to continue shopping.");
+    } catch(e) { /* ignore storage errors */ }
+  }
+
+  function redirectToLogin() {
+    saveShoppingReturnUrl();
+    window.location.href = isSubpage ? "../index.html?login=1" : "index.html?login=1";
+  }
+
+  async function getAuthenticatedUser() {
+    if (authenticatedUser) return authenticatedUser;
+    if (!authCheckPromise) {
+      authCheckPromise = fetch(API_ROOT + "/api/auth/me", { credentials: "include" })
+        .then(async res => {
+          if (!res.ok) return null;
+          const user = await res.json();
+          return user && user.username ? user : null;
+        })
+        .catch(() => null)
+        .then(user => {
+          authenticatedUser = user;
+          return user;
+        });
+    }
+    return authCheckPromise;
+  }
+
+  async function requireShoppingAuth() {
+    const user = await getAuthenticatedUser();
+    if (user) return true;
+    notice("Please login to continue shopping.");
+    redirectToLogin();
+    return false;
+  }
+
+  async function protectShoppingPage() {
+    if (!document.querySelector("#cart tbody") && !document.getElementById("checkout-items-list")) return true;
+    return requireShoppingAuth();
+  }
 
   // Flexible and resilient product lookup supporting MongoDB ObjectId, numeric ID, image filename, or name
   function getProduct(query) {
@@ -278,7 +323,8 @@
     document.querySelectorAll(".head-Cart").forEach(i=>i.setAttribute("data-count",count));
   }
 
-  function addToCart(id, qty=1, size="Default"){
+  async function addToCart(id, qty=1, size="Default"){
+    if (!(await requireShoppingAuth())) return;
     const p=getProduct(id); if(!p) return;
     const cart=getCart();
     const primaryId = p.dbId || p._id || p.id;
@@ -669,7 +715,8 @@
     }
     const checkoutUrl = root + "subpages/checkout.html";
     const checkout=document.querySelector("#sub-total .normal");
-    if(checkout)checkout.onclick=()=>{
+    if(checkout)checkout.onclick=async()=>{
+      if (!(await requireShoppingAuth())) return;
       if(!getCart().length) notice("Your cart is empty.");
       else location.href = checkoutUrl;
     };
@@ -763,6 +810,7 @@
 
     if(confirm){
       confirm.onclick = async () => {
+        if (!(await requireShoppingAuth())) return;
         const activeCart = getCart();
         if(!activeCart.length){
           notice("Your cart is empty. Add items before placing order.");
@@ -1220,16 +1268,29 @@
         }
         closeLogin();
         updateAuthUI(data.user || { username: u });
+        authenticatedUser = data.user || { username: u };
+        authCheckPromise = Promise.resolve(authenticatedUser);
         notice('Welcome back, ' + (data.user && data.user.username ? data.user.username : u) + '!');
 
         if(data.user && data.user.role === 'admin'){
           setTimeout(() => {
             window.location.href = adminUrl;
           }, 400);
-        } else if(isSubpage){
-          setTimeout(() => {
-            window.location.href = storeHomeUrl;
-          }, 400);
+        } else {
+          let returnUrl = null;
+          try {
+            returnUrl = sessionStorage.getItem("lotusShoppingReturnUrl");
+            sessionStorage.removeItem("lotusShoppingReturnUrl");
+          } catch(e) { /* ignore storage errors */ }
+          if(returnUrl){
+            setTimeout(() => {
+              window.location.href = returnUrl;
+            }, 400);
+          } else if(isSubpage){
+            setTimeout(() => {
+              window.location.href = storeHomeUrl;
+            }, 400);
+          }
         }
 
         return true;
@@ -1292,6 +1353,8 @@
       try {
         await fetch(API_ROOT + '/api/auth/logout', { method: 'POST', credentials: 'include' });
       } catch(e){ /* ignore network error on logout */ }
+      authenticatedUser = null;
+      authCheckPromise = null;
       updateAuthUI(null);
       notice('Signed out successfully.');
       if(window.location.pathname.includes('dashboard.html')){
@@ -1308,28 +1371,8 @@
     const initLoginBtn = document.getElementById('login-btn');
     if(initLoginBtn) initLoginBtn.onclick = (e) => { e.preventDefault(); openLogin(); };
 
-    async function checkAuth(){
-      try {
-        const res = await fetch(API_ROOT + '/api/auth/me', { credentials: 'include' });
-        if(!res.ok){
-          updateAuthUI(null);
-          return false;
-        }
-        const user = await res.json();
-        if(user && user.username){
-          updateAuthUI(user);
-          return true;
-        }
-        updateAuthUI(null);
-        return false;
-      } catch(err){
-        updateAuthUI(null);
-        return false;
-      }
-    }
-
     // Check auth status on load
-    checkAuth();
+    getAuthenticatedUser().then(user => updateAuthUI(user));
 
     // If page opened with ?login=1, open login modal
     try {
@@ -1378,18 +1421,27 @@
     };
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", async () => {
     setupMobile();
     setupShopCards();
     setupProduct();
     setupRelated();
-    setupCart();
     setupNewsletter();
-    setupCheckout();
     setupContact();
     setupAuth();
     updateCount();
     loadCatalog();
     loadActiveOffers();
+    try {
+      const shoppingMessage = sessionStorage.getItem("lotusShoppingMessage");
+      if (shoppingMessage) {
+        sessionStorage.removeItem("lotusShoppingMessage");
+        notice(shoppingMessage);
+      }
+    } catch(e) { /* ignore storage errors */ }
+    if (await protectShoppingPage()) {
+      setupCart();
+      setupCheckout();
+    }
   });
 })();

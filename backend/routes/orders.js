@@ -1,31 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
 const Order = require('../models/Order');
 const auth = require('../middleware/auth');
 const admin = require('../middleware/admin');
 const logger = require('../logger');
 
-// Soft auth: attaches req.user if a valid cookie exists, but never blocks the request
-function softAuth(req, res, next) {
-  try {
-    const token = req.cookies && req.cookies.token;
-    if (token && process.env.JWT_SECRET) {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded.user;
-    }
-  } catch (e) {
-    // ignore invalid/expired token for guest checkout
-  }
-  next();
-}
-
 function generateOrderNumber() {
   return 'LOTUS-' + Math.floor(100000 + Math.random() * 900000);
 }
 
-// POST /api/orders - create order (guest checkout allowed)
-router.post('/', softAuth, async (req, res) => {
+// POST /api/orders - create order for authenticated users
+router.post('/', auth, async (req, res) => {
   try {
     const { items, customer, paymentMethod, subtotal, discount, shipping, total } = req.body;
 
@@ -43,7 +28,7 @@ router.post('/', softAuth, async (req, res) => {
 
     const order = new Order({
       orderNumber,
-      user: req.user ? req.user.id : null,
+      user: req.user.id,
       items,
       customer,
       paymentMethod: paymentMethod || 'cod',
