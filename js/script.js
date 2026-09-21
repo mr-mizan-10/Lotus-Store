@@ -990,11 +990,17 @@
           <div class="login-input-group">
             <i class="fa-solid fa-lock"></i>
             <input id="login-password" type="password" placeholder="Password" autocomplete="current-password">
+            <button type="button" class="password-toggle" data-password-toggle="login-password" aria-label="Show password" title="Show password">
+              <i class="fa-solid fa-eye" aria-hidden="true"></i>
+            </button>
           </div>
 
           <div class="login-input-group" id="confirm-group" style="display:none;">
             <i class="fa-solid fa-shield-check"></i>
             <input id="login-password-confirm" type="password" placeholder="Confirm password" autocomplete="new-password">
+            <button type="button" class="password-toggle" data-password-toggle="login-password-confirm" aria-label="Show confirm password" title="Show confirm password">
+              <i class="fa-solid fa-eye" aria-hidden="true"></i>
+            </button>
           </div>
 
           <div style="margin-top:14px;">
@@ -1013,6 +1019,23 @@
       `;
       document.body.appendChild(loginModal);
     }
+
+    loginModal.querySelectorAll('[data-password-toggle]').forEach(toggle => {
+      if(toggle.dataset.bound === 'true') return;
+      toggle.dataset.bound = 'true';
+      toggle.addEventListener('click', () => {
+        const passwordInput = document.getElementById(toggle.dataset.passwordToggle);
+        const icon = toggle.querySelector('i');
+        if(!passwordInput || !icon) return;
+
+        const isVisible = passwordInput.type === 'text';
+        passwordInput.type = isVisible ? 'password' : 'text';
+        icon.classList.toggle('fa-eye', isVisible);
+        icon.classList.toggle('fa-eye-slash', !isVisible);
+        toggle.setAttribute('aria-label', isVisible ? toggle.dataset.passwordToggle === 'login-password-confirm' ? 'Show confirm password' : 'Show password' : toggle.dataset.passwordToggle === 'login-password-confirm' ? 'Hide confirm password' : 'Hide password');
+        toggle.setAttribute('title', toggle.getAttribute('aria-label'));
+      });
+    });
 
     const loginSubmit = document.getElementById('login-submit');
     const loginSubmitText = document.getElementById('login-submit-text');
